@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/diceRed.png-4762bbdefc4de63a230638c0f9b51412.stex"
+path="res://.import/pause.png-f9941e60f84ed12c483849d1466cab82.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tower Stuff/diceRed.png"
-dest_files=[ "res://.import/diceRed.png-4762bbdefc4de63a230638c0f9b51412.stex" ]
+source_file="res://Art/infobarIcons/pause.png"
+dest_files=[ "res://.import/pause.png-f9941e60f84ed12c483849d1466cab82.stex" ]
 
 [params]
 

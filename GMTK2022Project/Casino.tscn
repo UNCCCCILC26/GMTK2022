@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Art/Placeholder Tiles/Tilesheet/terrainTiles_default.png" type="Texture" id=1]
 [ext_resource path="res://Chip Tower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Gambler1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Art/Done Tiles/spritesheet (1).png" type="Texture" id=4]
 [ext_resource path="res://Art/Done Tiles/Final Sprite.png" type="Texture" id=5]
+[ext_resource path="res://Art/Tower Stuff/chipGreen.png" type="Texture" id=6]
+[ext_resource path="res://Art/Tower Stuff/chipBlue.png" type="Texture" id=7]
+[ext_resource path="res://Art/infobarIcons/fastForward.png" type="Texture" id=8]
+[ext_resource path="res://Art/infobarIcons/right.png" type="Texture" id=9]
+[ext_resource path="res://Art/infobarIcons/pause.png" type="Texture" id=10]
+[ext_resource path="res://UI.gd" type="Script" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "terrainTiles_default.png 0"
@@ -355,3 +361,90 @@ curve = SubResource( 3 )
 [node name="Gambler1" parent="Path2D" instance=ExtResource( 3 )]
 position = Vector2( -33.9231, 480.55 )
 rotation = -0.002801
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 11 )
+
+[node name="HUD" type="Control" parent="UI"]
+margin_right = 1028.0
+margin_bottom = 602.0
+
+[node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -400.0
+margin_right = 100.0
+rect_min_size = Vector2( 100, 400 )
+custom_constants/separation = 25
+
+[node name="Turret1" type="TextureButton" parent="UI/HUD/BuildBar"]
+margin_left = 10.0
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Turret1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Turret2" type="TextureButton" parent="UI/HUD/BuildBar"]
+margin_left = 10.0
+margin_top = 105.0
+margin_right = 90.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Turret2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="GameControl" type="HBoxContainer" parent="UI/HUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -164.0
+margin_top = -90.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControl"]
+pause_mode = 2
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+expand = true
+
+[node name="SpeedUp" type="TextureButton" parent="UI/HUD/GameControl"]
+margin_left = 74.0
+margin_right = 144.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 8 )
+expand = true
+
+[connection signal="pressed" from="UI/HUD/GameControl/PausePlay" to="UI" method="_on_PausePlay_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControl/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
