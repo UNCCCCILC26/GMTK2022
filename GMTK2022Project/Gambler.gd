@@ -19,3 +19,7 @@ func move(delta):
 
 func _on_VisibilityNotifier2D_screen_exited():
 	emit_signal("ReachedVault") # Replace with function body.
+
+
+func _on_HitBox_area_entered(area):
+	queue_free()

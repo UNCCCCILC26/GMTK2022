@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Gambler.gd" type="Script" id=1]
 [ext_resource path="res://Art/Placeholder Tiles/smile.png" type="Texture" id=2]
 [ext_resource path="res://LowerCurve.tres" type="Curve2D" id=3]
 [ext_resource path="res://UpperCurve.tres" type="Curve2D" id=4]
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array(  )
 }
@@ -13,30 +13,38 @@ _data = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 23.3311, 24.2244 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 25.8602, 25.0555 )
+
 [node name="Gambler" type="Node2D"]
 script = ExtResource( 1 )
 lowerPath = ExtResource( 3 )
 upperPath = ExtResource( 4 )
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = SubResource( 3 )
+curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( -33.9231, 480.55 )
 rotation = -0.002801
 loop = false
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="Path2D/PathFollow2D"]
+[node name="GamblerBody" type="KinematicBody2D" parent="Path2D/PathFollow2D"]
 
-[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D/KinematicBody2D"]
+[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D/GamblerBody"]
 position = Vector2( 1.52588e-05, -1.05943 )
 scale = Vector2( 0.735135, 0.735135 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/KinematicBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/GamblerBody"]
 position = Vector2( 0, -1.05945 )
 shape = SubResource( 2 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D"]
+[node name="HitBox" type="Area2D" parent="Path2D/PathFollow2D/GamblerBody"]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/GamblerBody/HitBox"]
+shape = SubResource( 3 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D"]
+[connection signal="area_entered" from="Path2D/PathFollow2D/GamblerBody/HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="screen_exited" from="Path2D/PathFollow2D/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
