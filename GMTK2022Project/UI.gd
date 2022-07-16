@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 func set_tower_preview(tower_type, mouse_position):
-	var drag_tower = load("res://Art/Tower Stuff/" + tower_type + ".tscn").instance()
+	var drag_tower = load("res://Chip Tower.tscn").instance()
 	drag_tower.set_name("DragTower")
 	drag_tower.modulate = Color("ad54ff3c")
 	
@@ -16,7 +16,7 @@ func set_tower_preview(tower_type, mouse_position):
 func update_tower_preview(new_position, color):
 	get_node("TowerPreview").rect_position = new_position
 	if get_node("TowerPreview/DragTower").modulate != Color(color):
-		ged_node("TowerPreview/DragTower").modulate = Color(color)
+		get_node("TowerPreview/DragTower").modulate = Color(color)
 
 
 
