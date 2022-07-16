@@ -1,19 +1,24 @@
 extends CanvasLayer
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func set_tower_preview(tower_type, mouse_position):
+	var drag_tower = load("res://Art/Tower Stuff/" + tower_type + ".tscn").instance()
+	drag_tower.set_name("DragTower")
+	drag_tower.modulate = Color("ad54ff3c")
+	
+	var control = Control.new()
+	control.add_child(drag_tower, true)
+	control.rect_position = mouse_position
+	control.set_name("TowerPreview")
+	add_child(control, true)
+	move_child(get_node("TowerPreview"), 0)
+
+func update_tower_preview(new_position, color):
+	get_node("TowerPreview").rect_position = new_position
+	if get_node("TowerPreview/DragTower").modulate != Color(color):
+		ged_node("TowerPreview/DragTower").modulate = Color(color)
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 ##
 ## Game Control Functions

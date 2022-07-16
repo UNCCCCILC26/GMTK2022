@@ -360,9 +360,7 @@ script = ExtResource( 11 )
 [node name="HUD" type="Control" parent="UI"]
 margin_right = 1028.0
 margin_bottom = 602.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
 anchor_top = 1.0
@@ -452,6 +450,7 @@ autostart = true
 
 [node name="Vault" parent="." instance=ExtResource( 13 )]
 position = Vector2( 929.138, 96.1665 )
+
 [connection signal="pressed" from="UI/HUD/GameControl/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControl/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
