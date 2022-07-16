@@ -20,9 +20,9 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="HitDetector" type="Area2D" parent="."]
+[node name="VaultHitDetector" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VaultHitDetector"]
 position = Vector2( -1.18924, 0 )
 shape = SubResource( 2 )
-[connection signal="area_entered" from="HitDetector" to="." method="_on_HitDetector_area_entered"]
+[connection signal="area_entered" from="VaultHitDetector" to="." method="_on_HitDetector_area_entered"]

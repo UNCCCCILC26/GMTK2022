@@ -10,12 +10,21 @@ var enemy1 = load("res://Gambler.tscn")
 var enemy2 = load("res://Slime.tscn")
 var enemysSpawned = 0
 var wave_pause = true
+var r1 = 3
+var r2 = 0
+var r3 = 0
+var wave_increased = false
+var dice_starting_pos = Vector2(706, 506)
+var die_object = load("res://Dice.tscn")
 
 func _ready():
 	randomize()
 	map_node = get_node("TileMap")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
+	var new_dice = die_object.instance()
+	new_dice.position = dice_starting_pos
+	add_child(new_dice)
 
 
 func _process(delta):
@@ -25,6 +34,14 @@ func _process(delta):
 		$EnemyTimer.start()
 		wave_pause = false
 		enemysSpawned = 0
+		
+	if wave_pause == true and get_tree().get_nodes_in_group("enemies").size() == 1 and wave_increased == false:
+		waveNum += 1
+		print(waveNum)
+		r1 += 1
+		r2 += 1
+		r3 += 1
+		wave_increased = true
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -71,8 +88,8 @@ func verify_and_build():
 		## update cash label
 
 func _on_WaveTimer_timeout():
-	waveNum	+= 1
 	wave_pause = true
+	wave_increased = false
 
 
 func _on_EnemyTimer_timeout():

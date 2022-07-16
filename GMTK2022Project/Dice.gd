@@ -3,11 +3,13 @@ extends Node2D
 var selected = false
 var rest_point
 var rest_nodes = []
+var is_moveable = true
 
 func _ready():
 	rest_nodes = get_tree().get_nodes_in_group("zone")
 	rest_point = rest_nodes[0].global_position
 	rest_nodes[0].select() 
+	add_to_group("die")
 
 func _physics_process(delta):
 	if selected:
@@ -29,5 +31,5 @@ func _input(event):
 					shortest_dist = distance	
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") and is_moveable == true:
 		selected = true

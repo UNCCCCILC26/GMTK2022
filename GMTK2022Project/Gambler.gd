@@ -8,6 +8,7 @@ var upperPath = load("res://UpperCurve.tres")
 func _ready():
 	var paths = [lowerPath, upperPath]
 	$Path2D.curve = paths[randi() % paths.size()]
+	add_to_group("enemies")
 
 func _physics_process(delta):
 	move(delta)
