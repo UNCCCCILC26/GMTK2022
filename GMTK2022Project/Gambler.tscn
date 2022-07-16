@@ -46,6 +46,5 @@ shape = SubResource( 2 )
 shape = SubResource( 3 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D"]
-
 [connection signal="area_entered" from="Path2D/PathFollow2D/GamblerBody/HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="screen_exited" from="Path2D/PathFollow2D/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
