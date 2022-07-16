@@ -1,6 +1,6 @@
 extends Node2D
 
-export var shootingRange = 200
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

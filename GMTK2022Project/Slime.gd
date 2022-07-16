@@ -1,6 +1,6 @@
-extends Node2D
+extends "res://Gambler.gd"
 
-export var shootingRange = 200
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,3 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_GamblerHitBox_area_entered(area):
+	 _on_HitBox_area_entered(area)
