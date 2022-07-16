@@ -85,8 +85,9 @@ scale = Vector2( 1.2, 1.2 )
 shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/GamblerBody"]
-position = Vector2( 0.944242, -7.54736 )
+position = Vector2( 0.0562878, -47.55 )
 rotation = 0.002801
+scale = Vector2( 3, 3 )
 frames = SubResource( 11 )
 frame = 2
 playing = true
