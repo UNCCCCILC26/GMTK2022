@@ -18,6 +18,12 @@ func _physics_process(delta):
 		global_position = lerp(global_position, rest_point, 10 * delta)
 		
 
+func set_moveable_false():
+	is_moveable = false
+
+func set_moveable_true():
+	is_moveable = true
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and not event.pressed:

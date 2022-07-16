@@ -34,14 +34,16 @@ func _process(delta):
 		$EnemyTimer.start()
 		wave_pause = false
 		enemysSpawned = 0
-		
-	if wave_pause == true and get_tree().get_nodes_in_group("enemies").size() == 1 and wave_increased == false:
+		get_tree().call_group("die", "set_moveable_false")
+	print(get_tree().get_nodes_in_group("enemies").size())
+	if wave_pause == true and get_tree().get_nodes_in_group("enemies").size() == 0 and wave_increased == false:
 		waveNum += 1
 		print(waveNum)
 		r1 += 1
 		r2 += 1
 		r3 += 1
 		wave_increased = true
+		get_tree().call_group("die", "set_moveable_true")
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
