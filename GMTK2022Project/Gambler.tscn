@@ -88,7 +88,7 @@ shape = SubResource( 3 )
 position = Vector2( 0.944242, -7.54736 )
 rotation = 0.002801
 frames = SubResource( 11 )
-frame = 5
+frame = 2
 playing = true
 
 [connection signal="area_entered" from="Path2D/PathFollow2D/GamblerBody/GamblerHitBox" to="." method="_on_HitBox_area_entered"]

@@ -74,8 +74,7 @@ func _on_WaveTimer_timeout():
 func _on_EnemyTimer_timeout():
 	if(enemysSpawned <= waveNum):
 		var gambler
-		print(randi() % 3)
-		if (waveNum > 4) && (randi() % 3 == 0):
+		if (waveNum > 4) && (randi() % 7 == 0):
 			gambler = enemy2.instance()
 			enemysSpawned += 2
 		else:
