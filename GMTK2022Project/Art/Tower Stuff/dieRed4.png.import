@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/range_overlay.png-c3504e5254e4c987a94303fd2ebdec63.stex"
+path="res://.import/dieRed4.png-09074f7d61a271a22b14095d2c454043.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tower Stuff/range_overlay.png"
-dest_files=[ "res://.import/range_overlay.png-c3504e5254e4c987a94303fd2ebdec63.stex" ]
+source_file="res://Art/Tower Stuff/dieRed4.png"
+dest_files=[ "res://.import/dieRed4.png-09074f7d61a271a22b14095d2c454043.stex" ]
 
 [params]
 
