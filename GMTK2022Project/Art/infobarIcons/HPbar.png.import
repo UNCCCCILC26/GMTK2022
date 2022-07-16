@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/range_overlay.png-c3504e5254e4c987a94303fd2ebdec63.stex"
+path="res://.import/HPbar.png-82446fecd6b2ef278c65ef0628083434.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tower Stuff/range_overlay.png"
-dest_files=[ "res://.import/range_overlay.png-c3504e5254e4c987a94303fd2ebdec63.stex" ]
+source_file="res://Art/infobarIcons/HPbar.png"
+dest_files=[ "res://.import/HPbar.png-82446fecd6b2ef278c65ef0628083434.stex" ]
 
 [params]
 

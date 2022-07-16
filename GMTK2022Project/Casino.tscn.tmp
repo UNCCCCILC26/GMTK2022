@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Art/Placeholder Tiles/Tilesheet/terrainTiles_default.png" type="Texture" id=1]
 [ext_resource path="res://Art/Tower Stuff/Obstructed.png" type="Texture" id=2]
@@ -11,14 +11,8 @@
 [ext_resource path="res://Art/infobarIcons/right.png" type="Texture" id=9]
 [ext_resource path="res://Art/infobarIcons/pause.png" type="Texture" id=10]
 [ext_resource path="res://UI.gd" type="Script" id=11]
-[ext_resource path="res://Resource1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Gambler.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Vault.tscn" type="PackedScene" id=13]
-[ext_resource path="res://drop_zone.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Art/Tower Stuff/chipRedWhite_side.png" type="Texture" id=15]
-[ext_resource path="res://Art/infobarIcons/HPbar.png" type="Texture" id=16]
-[ext_resource path="res://Art/infobarIcons/home.png" type="Texture" id=17]
-[ext_resource path="res://Art/Tower Stuff/chipGreenWhite_side.png" type="Texture" id=18]
-[ext_resource path="res://Art/Tower Stuff/chipBlueWhite_side.png" type="Texture" id=19]
 
 [sub_resource type="TileSet" id=1]
 0/name = "terrainTiles_default.png 0"
@@ -357,6 +351,7 @@
 
 [node name="Casino" type="Node2D"]
 script = ExtResource( 3 )
+enemy = ExtResource( 12 )
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( -1, 0 )
@@ -460,101 +455,11 @@ size_flags_vertical = 4
 texture_normal = ExtResource( 8 )
 expand = true
 
-[node name="Infobar" type="ColorRect" parent="UI/HUD"]
-self_modulate = Color( 0, 0, 0, 0.392157 )
-anchor_right = 1.0
-rect_min_size = Vector2( 0, 60 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/Infobar"]
-anchor_right = 1.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 60 )
-custom_constants/separation = 5
-
-[node name="Red" type="TextureRect" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_top = 10.0
-margin_right = 100.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 40 )
-size_flags_vertical = 4
-texture = ExtResource( 15 )
-expand = true
-
-[node name="RedAmount" type="Label" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_left = 105.0
-margin_right = 215.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 110, 60 )
-
-[node name="Green" type="TextureRect" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_left = 220.0
-margin_top = 10.0
-margin_right = 320.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 40 )
-size_flags_vertical = 4
-texture = ExtResource( 18 )
-expand = true
-
-[node name="GreenAmount" type="Label" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_left = 325.0
-margin_right = 435.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 110, 60 )
-
-[node name="Blue" type="TextureRect" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_left = 440.0
-margin_top = 10.0
-margin_right = 540.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 40 )
-size_flags_vertical = 4
-texture = ExtResource( 19 )
-expand = true
-
-[node name="BlueAmount" type="Label" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_left = 545.0
-margin_right = 655.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 110, 60 )
-
-[node name="Icon" type="TextureRect" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_left = 660.0
-margin_right = 720.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource( 17 )
-
-[node name="HP" type="TextureProgress" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_left = 725.0
-margin_top = 15.0
-margin_right = 1075.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 350, 30 )
-size_flags_vertical = 4
-value = 100.0
-texture_under = ExtResource( 16 )
-texture_progress = ExtResource( 16 )
-tint_under = Color( 0.215686, 0.215686, 0.215686, 1 )
-tint_progress = Color( 0.305882, 1, 0.0823529, 1 )
-
-[node name="Tween" type="Tween" parent="UI/HUD/Infobar/HBoxContainer/HP"]
-
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 0.7
-
-[node name="WaveTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
 autostart = true
 
-[node name="drop_zone" parent="." instance=ExtResource( 14 )]
-position = Vector2( 786.303, 485.075 )
-
-[node name="Resource1" parent="." instance=ExtResource( 12 )]
-position = Vector2( 903.683, 364.867 )
+[node name="WaveTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="Vault" parent="." instance=ExtResource( 13 )]
 position = Vector2( 929.138, 96.1665 )
