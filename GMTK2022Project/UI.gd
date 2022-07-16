@@ -43,8 +43,7 @@ func _on_PausePlay_pressed():
 		get_parent().start_next_wave()
 	else:
 		get_tree().paused = true
-	
-
+		$pause_popup.show()
 
 func _on_SpeedUp_pressed():
 	if Engine.get_time_scale() == 2.0:

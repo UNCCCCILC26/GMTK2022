@@ -16,6 +16,7 @@ func _ready():
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
 
+
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
@@ -26,7 +27,6 @@ func _unhandled_input(event):
 	if event.is_action_released("ui_accept") and build_mode == true:
 		verify_and_build()
 		cancel_build_mode()
-
 
 func initiate_build_mode(tower_type):
 	if(build_mode):
