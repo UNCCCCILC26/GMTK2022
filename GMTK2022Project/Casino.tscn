@@ -390,9 +390,7 @@ margin_right = 100.0
 rect_min_size = Vector2( 100, 400 )
 custom_constants/separation = 25
 
-[node name="Turret1" type="TextureButton" parent="UI/HUD/BuildBar" groups=[
-"build_buttons",
-]]
+[node name="Turret1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 margin_left = 10.0
 margin_right = 90.0
 margin_bottom = 80.0
@@ -410,9 +408,7 @@ margin_bottom = -10.0
 texture = ExtResource( 7 )
 expand = true
 
-[node name="Turret2" type="TextureButton" parent="UI/HUD/BuildBar" groups=[
-"build_buttons",
-]]
+[node name="Turret2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 margin_left = 10.0
 margin_top = 105.0
 margin_right = 90.0
@@ -570,6 +566,9 @@ position = Vector2( 974.297, 371.535 )
 
 [node name="Vault" parent="." instance=ExtResource( 13 )]
 position = Vector2( 929.138, 96.1665 )
+
+[node name="Enemies" type="Node" parent="."]
+
 [connection signal="pressed" from="UI/HUD/GameControl/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControl/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]

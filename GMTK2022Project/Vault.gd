@@ -13,4 +13,10 @@ func _on_HitDetector_area_entered(area):
 		health -= 10
 
 func getHealth():
-	pass
+	return health
+
+func addHealth(num):
+	health += num
+
+func lose_health(num):
+	health -= num

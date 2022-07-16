@@ -47,11 +47,11 @@ func _process(delta):
 		for i in dices:
 			if i.get_class() == "Node2D":
 				if i.is_r1:
-					r1 += 3
+					r1 += (randi() % 6) + 1
 				elif i.is_r2:
-					r2 += 3
+					r2 += (randi() % 6) + 1
 				elif i.is_r3:
-					r3 += 3
+					r3 += (randi() % 6) + 1
 		print("R1: " + str(r1))
 		print("R2: " + str(r2))
 		print("R3: " + str(r3))
@@ -112,13 +112,13 @@ func _on_WaveTimer_timeout():
 func _on_EnemyTimer_timeout():
 	if(enemysSpawned <= waveNum):
 		var gambler
-		if (waveNum > 4) && (randi() % 7 == 0):
+		if (waveNum > 0) && (randi() % 3 == 0):
 			gambler = enemy2.instance()
 			enemysSpawned += 2
 		else:
 			gambler = enemy1.instance()
 			enemysSpawned += 1
-		add_child(gambler)
+		$Enemies.add_child(gambler)
 	else:
 		$EnemyTimer.stop()
 		$WaveTimer.start()

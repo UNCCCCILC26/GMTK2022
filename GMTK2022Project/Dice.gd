@@ -36,18 +36,16 @@ func _input(event):
 				var distance = global_position.distance_to(child.global_position)
 				if distance < shortest_dist:
 					child.select()
-					if child.get_name() == "R1 Drop":
-						is_r3 = false
-						is_r2 = false
-						is_r1 = true
-					elif child.get_name() == "R2 Drop":
-						is_r3 = false
-						is_r2 = true
-						is_r1 = false
-					elif child.get_name() == "R3 Drop":
-						is_r3 = true
-						is_r2 = false
-						is_r1 = false
+					is_r3 = false
+					is_r2 = false
+					is_r1 = false
+					match child.get_name():
+						"R1 Drop":
+							is_r1 = true
+						"R2 Drop":
+							is_r2 = true
+						"R3 Drop":
+							is_r3 = true
 					rest_point = child.global_position
 					shortest_dist = distance
 

@@ -4,10 +4,10 @@
 [ext_resource path="res://Art/Placeholder Tiles/smile.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 93.3349, 92.7242 )
+extents = Vector2( 96.308, 95.6973 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 96.308, 95.6973 )
+extents = Vector2( 93.3349, 92.7242 )
 
 [node name="Vault" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -25,4 +25,5 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VaultHitDetector"]
 position = Vector2( -1.18924, 0 )
 shape = SubResource( 2 )
+
 [connection signal="area_entered" from="VaultHitDetector" to="." method="_on_HitDetector_area_entered"]
