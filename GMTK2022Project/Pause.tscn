@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Chicarego.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Pause.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://ChiKareGo2Font.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[node name="Pause" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Popup" type="Popup" parent="."]
+visible = true
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="ColorRect" type="ColorRect" parent="Popup"]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.176471, 0.466667, 0.835294, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Popup"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/CenterContainer"]
+margin_left = 473.0
+margin_top = 258.0
+margin_right = 551.0
+margin_bottom = 342.0
+custom_constants/separation = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="Popup/CenterContainer/VBoxContainer"]
+margin_right = 78.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="Popup/CenterContainer/VBoxContainer/CenterContainer"]
+margin_right = 78.0
+margin_bottom = 30.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Pause"
+
+[node name="CenterContainer2" type="CenterContainer" parent="Popup/CenterContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 78.0
+margin_bottom = 84.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/CenterContainer/VBoxContainer/CenterContainer2"]
+margin_left = 8.0
+margin_right = 70.0
+margin_bottom = 34.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Popup/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 62.0
+margin_bottom = 15.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
+margin_right = 62.0
+margin_bottom = 15.0
+
+[node name="Selector" type="Label" parent="Popup/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 7.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 7, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = ">"
+
+[node name="Start" type="Label" parent="Popup/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 11.0
+margin_right = 62.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 49, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Resume"
+
+[node name="CenterContainer2" type="CenterContainer" parent="Popup/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 19.0
+margin_right = 62.0
+margin_bottom = 34.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2"]
+margin_left = 1.0
+margin_right = 61.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 60, 0 )
+
+[node name="Selector" type="Label" parent="Popup/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_right = 7.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 7, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = ">"
+
+[node name="Options" type="Label" parent="Popup/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_left = 11.0
+margin_right = 37.0
+margin_bottom = 15.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Exit"
