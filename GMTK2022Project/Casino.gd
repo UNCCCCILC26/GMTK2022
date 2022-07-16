@@ -9,6 +9,7 @@ var waveNum = 0
 var enemy1 = load("res://Gambler.tscn")
 var enemy2 = load("res://Slime.tscn")
 var enemysSpawned = 0
+var wave_pause = true
 
 func _ready():
 	randomize()
@@ -20,6 +21,10 @@ func _ready():
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
+	if Input.is_action_just_pressed("start_wave") and wave_pause == true:
+		$EnemyTimer.start()
+		wave_pause = false
+		enemysSpawned = 0
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -67,8 +72,7 @@ func verify_and_build():
 
 func _on_WaveTimer_timeout():
 	waveNum	+= 1
-	$EnemyTimer.start()
-	enemysSpawned = 0
+	wave_pause = true
 
 
 func _on_EnemyTimer_timeout():
