@@ -9,5 +9,8 @@ func _process(delta):
 		queue_free()
 
 func _on_HitDetector_area_entered(area):
-	health -= 10
+	if area.get_name() == "GamblerHitBox":
+		health -= 10
 
+func getHealth():
+	pass

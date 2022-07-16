@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Gambler.gd" type="Script" id=1]
-[ext_resource path="res://Art/Placeholder Tiles/smile.png" type="Texture" id=2]
+[ext_resource path="res://Art/Enemies/player.png" type="Texture" id=2]
 [ext_resource path="res://LowerCurve.tres" type="Curve2D" id=3]
 [ext_resource path="res://UpperCurve.tres" type="Curve2D" id=4]
 
@@ -10,11 +10,39 @@ _data = {
 "points": PoolVector2Array(  )
 }
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 23.3311, 24.2244 )
+[sub_resource type="CapsuleShape2D" id=2]
+height = 6.98694
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 23.4873, 22.99 )
+[sub_resource type="CapsuleShape2D" id=3]
+height = 5.09467
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 48, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 96, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 144, 48, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Gambler" type="Node2D"]
 script = ExtResource( 1 )
@@ -31,21 +59,22 @@ loop = false
 
 [node name="GamblerBody" type="KinematicBody2D" parent="Path2D/PathFollow2D"]
 
-[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D/GamblerBody"]
-position = Vector2( 1.52588e-05, -1.05943 )
-scale = Vector2( 0.735135, 0.735135 )
-texture = ExtResource( 2 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/GamblerBody"]
 position = Vector2( 0, -1.05945 )
 shape = SubResource( 2 )
 
-[node name="HitBox" type="Area2D" parent="Path2D/PathFollow2D/GamblerBody"]
+[node name="GamblerHitBox" type="Area2D" parent="Path2D/PathFollow2D/GamblerBody"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/GamblerBody/HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/GamblerBody/GamblerHitBox"]
 shape = SubResource( 3 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D"]
+<<<<<<< HEAD
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/GamblerBody"]
+position = Vector2( -1.05575, -7.55298 )
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 8 )
+frame = 1
+playing = true
 
-[connection signal="area_entered" from="Path2D/PathFollow2D/GamblerBody/HitBox" to="." method="_on_HitBox_area_entered"]
-[connection signal="screen_exited" from="Path2D/PathFollow2D/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="area_entered" from="Path2D/PathFollow2D/GamblerBody/GamblerHitBox" to="." method="_on_HitBox_area_entered"]
+
