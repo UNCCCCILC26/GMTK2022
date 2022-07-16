@@ -24,6 +24,7 @@ curve = SubResource( 3 )
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( -33.9231, 480.55 )
 rotation = -0.002801
+loop = false
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="Path2D/PathFollow2D"]
 
