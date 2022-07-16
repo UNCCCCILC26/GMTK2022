@@ -8,7 +8,7 @@ func set_tower_preview(tower_type, mouse_position):
 	
 	var range_texture = Sprite.new()
 	range_texture.position = Vector2()
-	var scaling = drag_tower.Range / 600.0
+	var scaling = drag_tower.shootingRange / 600.0
 	range_texture.scale = Vector2(scaling, scaling)
 	var texture = load("res://Art/Tower Stuff/range_overlay.png")
 	range_texture.texture = texture

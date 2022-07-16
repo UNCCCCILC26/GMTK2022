@@ -1,8 +1,8 @@
 extends Node2D
 export var speed = 150
 export var strength = 10
-export(Resource) var lowerPath
-export(Resource) var upperPath
+var lowerPath = load("res://LowerCurve.tres")
+var upperPath = load("res://UpperCurve.tres")
  
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,5 +22,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_HitBox_area_entered(area):
+	_areaEntered(area)
+		
+func _areaEntered(area):
 	if area.get_name() == "VaultHitDetector":
 		queue_free()
+	

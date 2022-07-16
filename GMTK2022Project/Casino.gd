@@ -1,14 +1,17 @@
 extends Node2D
 
-export(PackedScene) var enemy
-
 var map_node
 var build_mode = false
 var build_valid = false
 var build_location
 var build_type
+var waveNum = 0
+var enemy1 = load("res://Gambler.tscn")
+var enemy2 = load("res://Slime.tscn")
+var enemysSpawned = 0
 
 func _ready():
+	randomize()
 	map_node = get_node("TileMap")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
@@ -62,15 +65,24 @@ func verify_and_build():
 		## deduct cash
 		## update cash label
 
-
-
-
-
 func _on_WaveTimer_timeout():
-	pass # Replace with function body.
+	waveNum	+= 1
+	$EnemyTimer.start()
+	enemysSpawned = 0
 
 
 func _on_EnemyTimer_timeout():
-	var gambler = enemy.instance()
-	add_child(gambler)
-	print(get_child_count())
+	if(enemysSpawned <= waveNum):
+		var gambler
+		print(randi() % 3)
+		if (waveNum > 4) && (randi() % 3 == 0):
+			gambler = enemy2.instance()
+			enemysSpawned += 2
+		else:
+			gambler = enemy1.instance()
+			enemysSpawned += 1
+		add_child(gambler)
+	else:
+		$EnemyTimer.stop()
+		$WaveTimer.start()
+		
