@@ -26,6 +26,8 @@ func _unhandled_input(event):
 
 
 func initiate_build_mode(tower_type):
+	if(build_mode):
+		cancel_build_mode()
 	build_type = tower_type + "T1"
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
@@ -48,7 +50,7 @@ func update_tower_preview():
 func cancel_build_mode():
 	build_mode = false
 	build_valid = false
-	get_node("UI/TowerPreview").queue_free()
+	get_node("UI/TowerPreview").free()
 
 func verify_and_build():
 	if build_valid:
@@ -56,6 +58,7 @@ func verify_and_build():
 		var new_tower = load("res://Chip Tower.tscn").instance()
 		new_tower.position = build_location
 		get_node("Turrets").add_child(new_tower, true)
+		map_node.get_node("TowerExclusion").set_cellv(map_node.get_node("TowerExclusion").world_to_map(build_location), 31)
 		## deduct cash
 		## update cash label
 

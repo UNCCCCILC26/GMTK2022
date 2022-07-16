@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Art/Placeholder Tiles/Tilesheet/terrainTiles_default.png" type="Texture" id=1]
+[ext_resource path="res://Art/Tower Stuff/Obstructed.png" type="Texture" id=2]
 [ext_resource path="res://Casino.gd" type="Script" id=3]
 [ext_resource path="res://Art/Done Tiles/spritesheet (1).png" type="Texture" id=4]
 [ext_resource path="res://Art/Done Tiles/Final Sprite.png" type="Texture" id=5]
@@ -332,6 +333,21 @@
 30/shape_one_way_margin = 0.0
 30/shapes = [  ]
 30/z_index = 0
+31/name = "Obstructed.png 31"
+31/texture = ExtResource( 2 )
+31/normal_map = ExtResource( 5 )
+31/tex_offset = Vector2( 0, 0 )
+31/modulate = Color( 1, 1, 1, 1 )
+31/region = Rect2( 64, 0, 64, 64 )
+31/tile_mode = 0
+31/occluder_offset = Vector2( 0, 0 )
+31/navigation_offset = Vector2( 0, 0 )
+31/shape_offset = Vector2( 0, 0 )
+31/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+31/shape_one_way = false
+31/shape_one_way_margin = 0.0
+31/shapes = [  ]
+31/z_index = 0
 
 [node name="Casino" type="Node2D"]
 script = ExtResource( 3 )
