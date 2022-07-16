@@ -39,7 +39,7 @@ func _input(event):
 					is_r3 = false
 					is_r2 = false
 					is_r1 = false
-					match child.get_name():
+					match child.get_name().left(7):
 						"R1 Drop":
 							is_r1 = true
 						"R2 Drop":

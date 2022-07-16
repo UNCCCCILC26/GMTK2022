@@ -9,3 +9,15 @@
 texture = ExtResource( 2 )
 
 [node name="R1 Drop" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( -21.703, -22.5949 )
+
+[node name="R1 Drop2" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( -21.703, 22.5949 )
+
+[node name="R1 Drop3" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( 22.5949, 23.4868 )
+
+[node name="R1 Drop4" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( 22.8922, -22.0003 )
+
+[node name="R1 Drop5" parent="Sprite" instance=ExtResource( 3 )]

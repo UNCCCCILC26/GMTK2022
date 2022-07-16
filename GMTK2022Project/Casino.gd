@@ -16,6 +16,7 @@ var r3 = 0
 var wave_increased = false
 var dice_starting_pos = Vector2(260, 540)
 var die_object = load("res://Dice.tscn")
+var zone_object = load("res://drop_zone.tscn")
 var first_wave = true
 
 func _ready():
@@ -25,6 +26,7 @@ func _ready():
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
 	var new_dice = die_object.instance()
 	new_dice.position = dice_starting_pos
+	dice_starting_pos.x += 150
 	add_child(new_dice)
 
 
@@ -39,6 +41,14 @@ func _process(delta):
 	if wave_pause == true and get_tree().get_nodes_in_group("enemies").size() == 0 and wave_increased == false:
 		waveNum += 1
 		print(waveNum)
+		if waveNum % 2 == 0:
+			var new_zone = zone_object.instance()
+			new_zone.position = dice_starting_pos
+			add_child(new_zone)
+			var new_dice = die_object.instance()
+			new_dice.position = dice_starting_pos
+			dice_starting_pos.x += 150
+			add_child(new_dice)
 		r1 += 1
 		r2 += 1
 		r3 += 1
