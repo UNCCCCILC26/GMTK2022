@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://drop_zone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/Tower Stuff/chipBlackWhite.png" type="Texture" id=2]
+
+[node name="Resource2" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="R2 Drop" parent="Sprite" instance=ExtResource( 1 )]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Art/Placeholder Tiles/Tilesheet/terrainTiles_default.png" type="Texture" id=1]
 [ext_resource path="res://Art/Tower Stuff/Obstructed.png" type="Texture" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://Art/infobarIcons/home.png" type="Texture" id=17]
 [ext_resource path="res://Art/Tower Stuff/chipGreenWhite_side.png" type="Texture" id=18]
 [ext_resource path="res://Art/Tower Stuff/chipBlueWhite_side.png" type="Texture" id=19]
+[ext_resource path="res://Resource3.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Resource2.tscn" type="PackedScene" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "terrainTiles_default.png 0"
@@ -388,7 +390,9 @@ margin_right = 100.0
 rect_min_size = Vector2( 100, 400 )
 custom_constants/separation = 25
 
-[node name="Turret1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+[node name="Turret1" type="TextureButton" parent="UI/HUD/BuildBar" groups=[
+"build_buttons",
+]]
 margin_left = 10.0
 margin_right = 90.0
 margin_bottom = 80.0
@@ -406,7 +410,9 @@ margin_bottom = -10.0
 texture = ExtResource( 7 )
 expand = true
 
-[node name="Turret2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+[node name="Turret2" type="TextureButton" parent="UI/HUD/BuildBar" groups=[
+"build_buttons",
+]]
 margin_left = 10.0
 margin_top = 105.0
 margin_right = 90.0
@@ -551,14 +557,19 @@ one_shot = true
 autostart = true
 
 [node name="drop_zone" parent="." instance=ExtResource( 14 )]
-position = Vector2( 786.303, 485.075 )
+position = Vector2( 264.457, 543.058 )
 
 [node name="Resource1" parent="." instance=ExtResource( 12 )]
-position = Vector2( 903.683, 364.867 )
+position = Vector2( 883.884, 272.236 )
+
+[node name="Resource2" parent="." instance=ExtResource( 21 )]
+position = Vector2( 833.989, 409.699 )
+
+[node name="Resource3" parent="." instance=ExtResource( 20 )]
+position = Vector2( 974.297, 371.535 )
 
 [node name="Vault" parent="." instance=ExtResource( 13 )]
 position = Vector2( 929.138, 96.1665 )
-
 [connection signal="pressed" from="UI/HUD/GameControl/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControl/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]

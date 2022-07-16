@@ -14,8 +14,9 @@ var r1 = 3
 var r2 = 0
 var r3 = 0
 var wave_increased = false
-var dice_starting_pos = Vector2(706, 506)
+var dice_starting_pos = Vector2(260, 540)
 var die_object = load("res://Dice.tscn")
+var first_wave = true
 
 func _ready():
 	randomize()
@@ -35,7 +36,6 @@ func _process(delta):
 		wave_pause = false
 		enemysSpawned = 0
 		get_tree().call_group("die", "set_moveable_false")
-	print(get_tree().get_nodes_in_group("enemies").size())
 	if wave_pause == true and get_tree().get_nodes_in_group("enemies").size() == 0 and wave_increased == false:
 		waveNum += 1
 		print(waveNum)
@@ -43,6 +43,18 @@ func _process(delta):
 		r2 += 1
 		r3 += 1
 		wave_increased = true
+		var dices = get_tree().get_nodes_in_group("die")
+		for i in dices:
+			if i.get_class() == "Node2D":
+				if i.is_r1:
+					r1 += 3
+				elif i.is_r2:
+					r2 += 3
+				elif i.is_r3:
+					r3 += 3
+		print("R1: " + str(r1))
+		print("R2: " + str(r2))
+		print("R3: " + str(r3))
 		get_tree().call_group("die", "set_moveable_true")
 
 func _unhandled_input(event):
@@ -91,7 +103,10 @@ func verify_and_build():
 
 func _on_WaveTimer_timeout():
 	wave_pause = true
-	wave_increased = false
+	if first_wave == true:
+		first_wave = false
+	else:
+		wave_increased = false
 
 
 func _on_EnemyTimer_timeout():

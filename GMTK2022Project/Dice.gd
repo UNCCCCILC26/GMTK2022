@@ -4,6 +4,9 @@ var selected = false
 var rest_point
 var rest_nodes = []
 var is_moveable = true
+var is_r1 = false
+var is_r2 = false
+var is_r3 = false
 
 func _ready():
 	rest_nodes = get_tree().get_nodes_in_group("zone")
@@ -16,7 +19,7 @@ func _physics_process(delta):
 		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
 	else:
 		global_position = lerp(global_position, rest_point, 10 * delta)
-		
+
 
 func set_moveable_false():
 	is_moveable = false
@@ -33,8 +36,20 @@ func _input(event):
 				var distance = global_position.distance_to(child.global_position)
 				if distance < shortest_dist:
 					child.select()
+					if child.get_name() == "R1 Drop":
+						is_r3 = false
+						is_r2 = false
+						is_r1 = true
+					elif child.get_name() == "R2 Drop":
+						is_r3 = false
+						is_r2 = true
+						is_r1 = false
+					elif child.get_name() == "R3 Drop":
+						is_r3 = true
+						is_r2 = false
+						is_r1 = false
 					rest_point = child.global_position
-					shortest_dist = distance	
+					shortest_dist = distance
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("click") and is_moveable == true:
