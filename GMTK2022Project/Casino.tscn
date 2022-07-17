@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Art/Placeholder Tiles/Tilesheet/terrainTiles_default.png" type="Texture" id=1]
 [ext_resource path="res://Art/Tower Stuff/Obstructed.png" type="Texture" id=2]
@@ -7,8 +7,6 @@
 [ext_resource path="res://Art/Done Tiles/Final Sprite.png" type="Texture" id=5]
 [ext_resource path="res://Art/Tower Stuff/chipGreen.png" type="Texture" id=6]
 [ext_resource path="res://Art/infobarIcons/fastForward.png" type="Texture" id=8]
-[ext_resource path="res://Art/infobarIcons/right.png" type="Texture" id=9]
-[ext_resource path="res://Art/infobarIcons/pause.png" type="Texture" id=10]
 [ext_resource path="res://UI.gd" type="Script" id=11]
 [ext_resource path="res://Resource1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Vault.tscn" type="PackedScene" id=13]
@@ -410,33 +408,17 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="GameControl" type="HBoxContainer" parent="UI/HUD"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -164.0
-margin_top = -90.0
-margin_right = -20.0
-margin_bottom = -20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControl"]
-pause_mode = 2
-margin_right = 70.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-toggle_mode = true
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
-expand = true
+anchor_left = 1.029
+anchor_top = 1.034
+anchor_right = 1.029
+anchor_bottom = 1.034
+margin_left = -119.812
+margin_top = -110.468
+margin_right = -49.812
+margin_bottom = -40.468
 
 [node name="SpeedUp" type="TextureButton" parent="UI/HUD/GameControl"]
-margin_left = 74.0
-margin_right = 144.0
+margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 size_flags_horizontal = 4
@@ -555,7 +537,6 @@ position = Vector2( 929.138, 96.1665 )
 
 [node name="Enemies" type="Node" parent="."]
 
-[connection signal="pressed" from="UI/HUD/GameControl/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControl/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]

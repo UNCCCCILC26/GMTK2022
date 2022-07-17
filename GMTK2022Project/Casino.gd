@@ -10,9 +10,9 @@ var enemy1 = load("res://Gambler.tscn")
 var enemy2 = load("res://Slime.tscn")
 var enemysSpawned = 0
 var wave_pause = true
-var r1 = 0
-var r2 = 0
-var r3 = 0
+var r1 = 1
+var r2 = 1
+var r3 = 1
 var wave_increased = false
 var dice_starting_pos = Vector2(260, 540)
 var die_object = load("res://Dice.tscn")
@@ -38,29 +38,7 @@ func _process(delta):
 	$UI/HUD/Infobar/HBoxContainer/BlueAmount.text = str(r1)
 	if build_mode:
 		update_tower_preview()
-	if Input.is_action_just_pressed("start_wave") and wave_pause == true:
-		$EnemyTimer.start()
-		wave_pause = false
-		enemysSpawned = 0
-	if wave_pause == true and get_tree().get_nodes_in_group("enemies").size() == 0 and wave_increased == false:
-		waveNum += 1
-		print(waveNum)
-		if waveNum % 2 == 0:
-			var new_zone = zone_object.instance()
-			new_zone.position = dice_starting_pos
-			new_zone.draw()
-			add_child(new_zone)
-			var new_dice = die_object.instance()
-			new_dice.position = dice_starting_pos
-			add_child(new_dice)
-			dice_starting_pos.x += 70
-		r1 += $"Resource1".get_resource()
-		r2 += $"Resource2".get_resource()
-		r3 += $"Resource3".get_resource()
-		wave_increased = true
-		var dices = get_tree().get_nodes_in_group("die")
-#		
-		get_tree().call_group("die", "set_moveable_true")
+		
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -74,7 +52,7 @@ func initiate_build_mode(tower_type):
 		cancel_build_mode()
 	build_type = tower_type + "T1"
 	build_mode = true
-	get_node("UI").set_tower_preview(get_global_mouse_position())
+	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
@@ -106,24 +84,42 @@ func verify_and_build():
 		new_tower.position = build_location
 		get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cellv(map_node.get_node("TowerExclusion").world_to_map(build_location), 31)
-		get_child(9).lose_health(100)
+		get_child(9).lose_health(175)
 		r1 -= 1
 		r2 -= 1
 		r3 -= 1
 		## update cash label
 
 func _on_WaveTimer_timeout():
-	wave_pause = true
-	if first_wave == true:
-		first_wave = false
-	else:
-		wave_increased = false
+	waveNum += 1
+	print(waveNum)
+	if (waveNum % (3 if waveNum <= 8 else 7) == 0):
+		var new_zone = zone_object.instance()
+		new_zone.position = dice_starting_pos
+		new_zone.draw()
+		add_child(new_zone)
+		var new_dice = die_object.instance()
+		new_dice.position = dice_starting_pos
+		add_child(new_dice)
+		dice_starting_pos.x += 70
+		if dice_starting_pos.x >= 980:
+			dice_starting_pos = 260
+	if(waveNum % 10 == 0):
+		$EnemyTimer.wait_time -= .1
+		$EnemyTimer.wait_time = max($EnemyTimer.wait_time, .1)
+	r1 += $"Resource1".get_resource()
+	r2 += $"Resource2".get_resource()
+	r3 += $"Resource3".get_resource()
+	wave_increased = true
+	$EnemyTimer.start()
+	wave_pause = false
+	enemysSpawned = 0
 
 
 func _on_EnemyTimer_timeout():
-	if(enemysSpawned < waveNum):
+	if(enemysSpawned < waveNum) or ((enemysSpawned < waveNum * 2) and waveNum > 8):
 		var gambler
-		var num = max(25 - (waveNum / 2), 7)
+		var num = max(25 - (waveNum / 2), 1)
 		if (waveNum > 5) && (randi() % num == 0):
 			gambler = enemy2.instance()
 			enemysSpawned += 2

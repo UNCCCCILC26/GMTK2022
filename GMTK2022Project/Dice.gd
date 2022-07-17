@@ -11,6 +11,7 @@ var is_unique = true
 func _ready():
 	add_to_group("die")
 	goToClosest()
+	old_rest_point = position
 	
 func updateList():
 	rest_nodes = get_tree().get_nodes_in_group("zone")
@@ -19,6 +20,8 @@ func _physics_process(delta):
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
 	else:
+		if(rest_point == null):
+			rest_point = old_rest_point
 		global_position = lerp(global_position, rest_point, 10 * delta)
 
 func goToClosest():

@@ -40,12 +40,12 @@ margin_right = 565.0
 margin_bottom = 553.0
 texture_normal = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="TextureRect/Options"]
-margin_left = 44.0
-margin_top = 82.0
-margin_right = 100.0
-margin_bottom = 98.0
-text = "Options"
+[node name="How to Play" type="Label" parent="TextureRect/Options"]
+margin_left = 33.0
+margin_top = 77.0
+margin_right = 110.0
+margin_bottom = 93.0
+text = "How To Play"
 align = 1
 valign = 1
 
