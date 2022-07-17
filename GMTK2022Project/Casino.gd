@@ -102,6 +102,10 @@ func cancel_build_mode():
 	get_node("UI/TowerPreview").free()
 
 func verify_and_build():
+	if get_child(9).getHealth() <= 10:
+		build_valid = false
+	else:
+		get_child(9).lose_health(10)
 	if build_valid:
 		## Test to verify player has enough cash
 		var new_tower = load("res://Chip Tower.tscn").instance()
