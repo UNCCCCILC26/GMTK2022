@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/right.png-bd7dd6c5b824ff5a6bd75dfb7d300947.stex"
+path="res://.import/1280bg.png-243cfe44797c78aa4fb84ee4edac5d6d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/infobarIcons/right.png"
-dest_files=[ "res://.import/right.png-bd7dd6c5b824ff5a6bd75dfb7d300947.stex" ]
+source_file="res://Art/1280bg.png"
+dest_files=[ "res://.import/1280bg.png-243cfe44797c78aa4fb84ee4edac5d6d.stex" ]
 
 [params]
 

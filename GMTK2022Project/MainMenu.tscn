@@ -22,6 +22,9 @@ margin_right = 300.0
 margin_bottom = 499.0
 rect_rotation = 13.5
 texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="TextureRect/Start"]
 margin_left = 39.0568
@@ -39,6 +42,9 @@ margin_top = 363.0
 margin_right = 565.0
 margin_bottom = 553.0
 texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="How to Play" type="Label" parent="TextureRect/Options"]
 margin_left = 33.0

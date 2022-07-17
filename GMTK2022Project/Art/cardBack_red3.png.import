@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/right.png-bd7dd6c5b824ff5a6bd75dfb7d300947.stex"
+path="res://.import/cardBack_red3.png-b1d853caa9014f3872129adb05847d5b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/infobarIcons/right.png"
-dest_files=[ "res://.import/right.png-bd7dd6c5b824ff5a6bd75dfb7d300947.stex" ]
+source_file="res://Art/cardBack_red3.png"
+dest_files=[ "res://.import/cardBack_red3.png-b1d853caa9014f3872129adb05847d5b.stex" ]
 
 [params]
 
