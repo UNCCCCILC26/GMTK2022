@@ -9,7 +9,7 @@ func _ready():
 func on_start_pressed():
 	get_parent().add_child(first_scene.instance())
 	queue_free()
-	
+
 func on_exit_pressed():
 	get_tree().quit()
 
