@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Art/Placeholder Tiles/Tilesheet/terrainTiles_default.png" type="Texture" id=1]
 [ext_resource path="res://Art/Tower Stuff/Obstructed.png" type="Texture" id=2]
 [ext_resource path="res://Casino.gd" type="Script" id=3]
 [ext_resource path="res://Art/Done Tiles/spritesheet (1).png" type="Texture" id=4]
 [ext_resource path="res://Art/Done Tiles/Final Sprite.png" type="Texture" id=5]
-[ext_resource path="res://Art/Tower Stuff/chipGreen.png" type="Texture" id=6]
 [ext_resource path="res://Art/Tower Stuff/chipBlue.png" type="Texture" id=7]
 [ext_resource path="res://Art/infobarIcons/fastForward.png" type="Texture" id=8]
 [ext_resource path="res://Art/infobarIcons/right.png" type="Texture" id=9]
@@ -16,7 +15,6 @@
 [ext_resource path="res://drop_zone.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Art/Tower Stuff/chipRedWhite_side.png" type="Texture" id=15]
 [ext_resource path="res://Art/infobarIcons/HPbar.png" type="Texture" id=16]
-[ext_resource path="res://Art/infobarIcons/home.png" type="Texture" id=17]
 [ext_resource path="res://Art/Tower Stuff/chipGreenWhite_side.png" type="Texture" id=18]
 [ext_resource path="res://Art/Tower Stuff/chipBlueWhite_side.png" type="Texture" id=19]
 [ext_resource path="res://Resource3.tscn" type="PackedScene" id=20]
@@ -357,6 +355,10 @@
 31/shapes = [  ]
 31/z_index = 0
 
+[sub_resource type="Theme" id=3]
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
+
 [node name="Casino" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -381,9 +383,6 @@ script = ExtResource( 11 )
 margin_right = 1028.0
 margin_bottom = 602.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
 anchor_top = 1.0
@@ -393,9 +392,7 @@ margin_right = 100.0
 rect_min_size = Vector2( 100, 400 )
 custom_constants/separation = 25
 
-[node name="Turret1" type="TextureButton" parent="UI/HUD/BuildBar" groups=[
-"build_buttons",
-]]
+[node name="Turret1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 margin_left = 10.0
 margin_right = 90.0
 margin_bottom = 80.0
@@ -411,27 +408,6 @@ margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
 texture = ExtResource( 7 )
-expand = true
-
-[node name="Turret2" type="TextureButton" parent="UI/HUD/BuildBar" groups=[
-"build_buttons",
-]]
-margin_left = 10.0
-margin_top = 105.0
-margin_right = 90.0
-margin_bottom = 185.0
-rect_min_size = Vector2( 80, 80 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Turret2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-texture = ExtResource( 6 )
 expand = true
 
 [node name="GameControl" type="HBoxContainer" parent="UI/HUD"]
@@ -485,6 +461,7 @@ margin_top = 10.0
 margin_right = 100.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 40 )
+hint_tooltip = "Resource 1"
 size_flags_vertical = 4
 texture = ExtResource( 15 )
 expand = true
@@ -494,6 +471,8 @@ margin_left = 105.0
 margin_right = 215.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 110, 60 )
+text = "9999999"
+valign = 1
 
 [node name="Green" type="TextureRect" parent="UI/HUD/Infobar/HBoxContainer"]
 margin_left = 220.0
@@ -501,6 +480,7 @@ margin_top = 10.0
 margin_right = 320.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 40 )
+hint_tooltip = "Resource 2"
 size_flags_vertical = 4
 texture = ExtResource( 18 )
 expand = true
@@ -510,6 +490,7 @@ margin_left = 325.0
 margin_right = 435.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 110, 60 )
+valign = 1
 
 [node name="Blue" type="TextureRect" parent="UI/HUD/Infobar/HBoxContainer"]
 margin_left = 440.0
@@ -517,6 +498,7 @@ margin_top = 10.0
 margin_right = 540.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 40 )
+hint_tooltip = "Resouce 3"
 size_flags_vertical = 4
 texture = ExtResource( 19 )
 expand = true
@@ -526,30 +508,30 @@ margin_left = 545.0
 margin_right = 655.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 110, 60 )
-
-[node name="Icon" type="TextureRect" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_left = 660.0
-margin_right = 720.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource( 17 )
+valign = 1
 
 [node name="HP" type="TextureProgress" parent="UI/HUD/Infobar/HBoxContainer"]
-margin_left = 725.0
+margin_left = 660.0
 margin_top = 15.0
-margin_right = 1075.0
+margin_right = 1010.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 350, 30 )
 size_flags_vertical = 4
-value = 100.0
+max_value = 1.0
+step = 0.01
+value = 1.0
 texture_under = ExtResource( 16 )
 texture_progress = ExtResource( 16 )
 tint_under = Color( 0.215686, 0.215686, 0.215686, 1 )
 tint_progress = Color( 0.305882, 1, 0.0823529, 1 )
 
-[node name="Tween" type="Tween" parent="UI/HUD/Infobar/HBoxContainer/HP"]
+[node name="Label" type="Label" parent="UI/HUD/Infobar/HBoxContainer/HP"]
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 342.0
+margin_bottom = 22.0
+theme = SubResource( 3 )
+text = "Money: 1000"
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.7
@@ -575,6 +557,7 @@ position = Vector2( 974.297, 371.535 )
 position = Vector2( 929.138, 96.1665 )
 
 [node name="Enemies" type="Node" parent="."]
+
 [connection signal="pressed" from="UI/HUD/GameControl/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControl/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]

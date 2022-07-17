@@ -1,8 +1,8 @@
 extends Node2D
 
-export var shootingRange = 200
-export var shootingSpeed = .4
-export var shootingDmg = 50
+export var shootingRange = 100
+export var shootingSpeed = .8
+export var shootingDmg = 25
 
 var shootingVars = [shootingRange, shootingSpeed, shootingDmg]
 
