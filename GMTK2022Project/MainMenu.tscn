@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Chicarego.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Art/infobarIcons/main_menu.png" type="Texture" id=1]
 [ext_resource path="res://MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Art/infobarIcons/cardBack_red3.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://ChiKareGo2Font.ttf"
@@ -14,12 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
-color = Color( 0.176471, 0.466667, 0.835294, 1 )
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
 
@@ -125,4 +121,56 @@ margin_bottom = 15.0
 rect_min_size = Vector2( 49, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Start" type="TextureButton" parent="TextureRect"]
+margin_left = 160.0
+margin_top = 309.0
+margin_right = 300.0
+margin_bottom = 499.0
+rect_rotation = 13.5
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="TextureRect/Start"]
+margin_left = 39.0568
+margin_top = 77.0102
+margin_right = 101.057
+margin_bottom = 117.01
+text = "Start
+"
+align = 1
+valign = 1
+
+[node name="Options" type="TextureButton" parent="TextureRect"]
+margin_left = 425.0
+margin_top = 363.0
+margin_right = 565.0
+margin_bottom = 553.0
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="TextureRect/Options"]
+margin_left = 44.0
+margin_top = 82.0
+margin_right = 100.0
+margin_bottom = 98.0
+text = "Options"
+align = 1
+valign = 1
+
+[node name="Exit" type="TextureButton" parent="TextureRect"]
+margin_left = 728.0
+margin_top = 349.0
+margin_right = 852.0
+margin_bottom = 521.0
+rect_rotation = -13.2
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="TextureRect/Exit"]
+margin_left = 39.9661
+margin_top = 79.2194
+margin_right = 101.966
+margin_bottom = 103.219
 text = "Exit"
+align = 1
+valign = 1
