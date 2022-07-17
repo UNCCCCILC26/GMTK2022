@@ -1,23 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Resource1.gd" type="Script" id=1]
 [ext_resource path="res://Art/Tower Stuff/chipBlueWhite.png" type="Texture" id=2]
 [ext_resource path="res://drop_zone.tscn" type="PackedScene" id=3]
 
+[sub_resource type="CircleShape2D" id=1]
+radius = 31.0
+
 [node name="Resource1" type="Node2D"]
+script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
 [node name="R1 Drop" parent="Sprite" instance=ExtResource( 3 )]
-position = Vector2( -21.703, -22.5949 )
 
-[node name="R1 Drop2" parent="Sprite" instance=ExtResource( 3 )]
-position = Vector2( -21.703, 22.5949 )
+[node name="Area2D" type="Area2D" parent="Sprite"]
 
-[node name="R1 Drop3" parent="Sprite" instance=ExtResource( 3 )]
-position = Vector2( 22.5949, 23.4868 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+shape = SubResource( 1 )
 
-[node name="R1 Drop4" parent="Sprite" instance=ExtResource( 3 )]
-position = Vector2( 22.8922, -22.0003 )
-
-[node name="R1 Drop5" parent="Sprite" instance=ExtResource( 3 )]
+[connection signal="area_entered" from="Sprite/Area2D" to="." method="_on_Area2D_area_entered"]

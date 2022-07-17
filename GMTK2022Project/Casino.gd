@@ -26,23 +26,22 @@ func _ready():
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
 	var new_dice = die_object.instance()
 	new_dice.position = dice_starting_pos
-	dice_starting_pos.x += 150
+	dice_starting_pos.x += 70
 	add_child(new_dice)
 
 
 func _process(delta):
 	$UI/HUD/Infobar/HBoxContainer/HP.value = $Vault.health / $Vault.maxHealth
 	$UI/HUD/Infobar/HBoxContainer/HP/Label.text = str("Money: " + str($Vault.health))
-	$UI/HUD/Infobar/HBoxContainer/RedAmount.text = str(r1)
+	$UI/HUD/Infobar/HBoxContainer/RedAmount.text = str(r3)
 	$UI/HUD/Infobar/HBoxContainer/GreenAmount.text = str(r2)
-	$UI/HUD/Infobar/HBoxContainer/BlueAmount.text = str(r3)
+	$UI/HUD/Infobar/HBoxContainer/BlueAmount.text = str(r1)
 	if build_mode:
 		update_tower_preview()
 	if Input.is_action_just_pressed("start_wave") and wave_pause == true:
 		$EnemyTimer.start()
 		wave_pause = false
 		enemysSpawned = 0
-		get_tree().call_group("die", "set_moveable_false")
 	if wave_pause == true and get_tree().get_nodes_in_group("enemies").size() == 0 and wave_increased == false:
 		waveNum += 1
 		print(waveNum)
@@ -53,25 +52,14 @@ func _process(delta):
 			add_child(new_zone)
 			var new_dice = die_object.instance()
 			new_dice.position = dice_starting_pos
-			dice_starting_pos.x += 70
 			add_child(new_dice)
-
-		r1 += 1
-		r2 += 1
-		r3 += 1
+			dice_starting_pos.x += 70
+		r1 += $"Resource1".get_resource()
+		r2 += $"Resource2".get_resource()
+		r3 += $"Resource3".get_resource()
 		wave_increased = true
 		var dices = get_tree().get_nodes_in_group("die")
-		for i in dices:
-			if i.get_class() == "Node2D":
-				if i.is_r1:
-					r1 += (randi() % 6) + 1
-				elif i.is_r2:
-					r2 += (randi() % 6) + 1
-				elif i.is_r3:
-					r3 += (randi() % 6) + 1
-		print("R1: " + str(r1))
-		print("R2: " + str(r2))
-		print("R3: " + str(r3))
+#		
 		get_tree().call_group("die", "set_moveable_true")
 
 func _unhandled_input(event):
@@ -86,7 +74,7 @@ func initiate_build_mode(tower_type):
 		cancel_build_mode()
 	build_type = tower_type + "T1"
 	build_mode = true
-	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
+	get_node("UI").set_tower_preview(get_global_mouse_position())
 
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
@@ -111,18 +99,17 @@ func cancel_build_mode():
 func verify_and_build():
 	if get_child(9).getHealth() <= 100 or r1 < 1 or r2 < 1 or r3 < 1:
 		build_valid = false
-	else:
-		get_child(9).lose_health(100)
-		r1 -= 1
-		r2 -= 1
-		r3 -= 1
+
 	if build_valid:
 		## Test to verify player has enough cash
 		var new_tower = load("res://Chip Tower.tscn").instance()
 		new_tower.position = build_location
 		get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cellv(map_node.get_node("TowerExclusion").world_to_map(build_location), 31)
-		## deduct cash
+		get_child(9).lose_health(100)
+		r1 -= 1
+		r2 -= 1
+		r3 -= 1
 		## update cash label
 
 func _on_WaveTimer_timeout():
@@ -134,10 +121,10 @@ func _on_WaveTimer_timeout():
 
 
 func _on_EnemyTimer_timeout():
-	if(enemysSpawned <= waveNum):
+	if(enemysSpawned < waveNum):
 		var gambler
-		var num = 10 - waveNum
-		if (waveNum > 0) && (randi() % num == 0):
+		var num = max(25 - (waveNum / 2), 7)
+		if (waveNum > 5) && (randi() % num == 0):
 			gambler = enemy2.instance()
 			enemysSpawned += 2
 		else:
@@ -147,4 +134,8 @@ func _on_EnemyTimer_timeout():
 	else:
 		$EnemyTimer.stop()
 		$WaveTimer.start()
-		
+
+
+func _on_Vault_death_signal():
+	get_parent().add_child(load("res://MainMenu.tscn").instance()) # Replace with function body.
+	queue_free()
