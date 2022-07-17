@@ -381,6 +381,9 @@ script = ExtResource( 11 )
 margin_right = 1028.0
 margin_bottom = 602.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
 anchor_top = 1.0
