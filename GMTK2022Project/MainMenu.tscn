@@ -10,41 +10,37 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1800.0
+margin_bottom = 1008.0
 texture = ExtResource( 1 )
-expand = true
+stretch_mode = 3
 
 [node name="Start" type="TextureButton" parent="TextureRect"]
-margin_left = 160.0
-margin_top = 309.0
-margin_right = 300.0
-margin_bottom = 499.0
+margin_left = 280.0
+margin_top = 529.0
+margin_right = 420.0
+margin_bottom = 719.0
 rect_rotation = 13.5
+rect_scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="TextureRect/Start"]
-margin_left = 39.0568
-margin_top = 77.0102
-margin_right = 101.057
-margin_bottom = 117.01
+margin_left = 38.4857
+margin_top = 68.92
+margin_right = 100.486
+margin_bottom = 108.92
 text = "Start
 "
 align = 1
 valign = 1
 
 [node name="Options" type="TextureButton" parent="TextureRect"]
-margin_left = 425.0
-margin_top = 363.0
-margin_right = 565.0
-margin_bottom = 553.0
+margin_left = 775.0
+margin_top = 634.0
+margin_right = 915.0
+margin_bottom = 824.0
+rect_scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="How to Play" type="Label" parent="TextureRect/Options"]
 margin_left = 33.0
@@ -56,18 +52,19 @@ align = 1
 valign = 1
 
 [node name="Exit" type="TextureButton" parent="TextureRect"]
-margin_left = 728.0
-margin_top = 349.0
-margin_right = 852.0
-margin_bottom = 521.0
-rect_rotation = -13.2
+margin_left = 1290.0
+margin_top = 582.0
+margin_right = 1430.0
+margin_bottom = 772.0
+rect_rotation = -15.0
+rect_scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="TextureRect/Exit"]
-margin_left = 39.9661
-margin_top = 79.2194
-margin_right = 101.966
-margin_bottom = 103.219
+margin_left = 40.9999
+margin_top = 83.5704
+margin_right = 103.0
+margin_bottom = 107.57
 text = "Exit"
 align = 1
 valign = 1
