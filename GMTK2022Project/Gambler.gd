@@ -37,6 +37,6 @@ func _areaEntered(area):
 func harm(dmg):
 	health -= dmg
 	if health <= 0:
-		emit_signal("enemyDeath")
+		get_parent().get_parent().get_node("Vault").addHealth(maxHealth)
 		queue_free()
 

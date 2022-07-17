@@ -31,6 +31,11 @@ func _ready():
 
 
 func _process(delta):
+	$UI/HUD/Infobar/HBoxContainer/HP.value = $Vault.health / $Vault.maxHealth
+	$UI/HUD/Infobar/HBoxContainer/HP/Label.text = str("Money: " + str($Vault.health))
+	$UI/HUD/Infobar/HBoxContainer/RedAmount.text = str(r1)
+	$UI/HUD/Infobar/HBoxContainer/GreenAmount.text = str(r2)
+	$UI/HUD/Infobar/HBoxContainer/BlueAmount.text = str(r3)
 	if build_mode:
 		update_tower_preview()
 	if Input.is_action_just_pressed("start_wave") and wave_pause == true:
@@ -126,7 +131,7 @@ func _on_WaveTimer_timeout():
 func _on_EnemyTimer_timeout():
 	if(enemysSpawned <= waveNum):
 		var gambler
-		if (waveNum > 0) && (randi() % 3 == 0):
+		if (waveNum > 0) && (randi() % 7 == 0):
 			gambler = enemy2.instance()
 			enemysSpawned += 2
 		else:
