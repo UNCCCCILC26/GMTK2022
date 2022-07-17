@@ -14,6 +14,8 @@ func _physics_process(delta):
 	translateBy = translateBy.rotated(angle)
 	position.x -= translateBy.x
 	position.y -= translateBy.y
+	if get_parent().get_node("Enemies").get_child_count() == 0:
+		queue_free()
 	
 func _on_Area2D_area_entered(area):
 	if area.get_name() == "GamblerHitBox":

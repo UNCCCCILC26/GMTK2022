@@ -558,6 +558,7 @@ position = Vector2( 929.138, 96.1665 )
 
 [node name="Enemies" type="Node" parent="."]
 
+[connection signal="mouse_entered" from="UI/HUD/BuildBar/Turret1" to="." method="_on_Turret1_mouse_entered"]
 [connection signal="pressed" from="UI/HUD/GameControl/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControl/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]

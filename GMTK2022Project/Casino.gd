@@ -10,7 +10,7 @@ var enemy1 = load("res://Gambler.tscn")
 var enemy2 = load("res://Slime.tscn")
 var enemysSpawned = 0
 var wave_pause = true
-var r1 = 3
+var r1 = 0
 var r2 = 0
 var r3 = 0
 var wave_increased = false
@@ -49,11 +49,13 @@ func _process(delta):
 		if waveNum % 2 == 0:
 			var new_zone = zone_object.instance()
 			new_zone.position = dice_starting_pos
+			new_zone.draw()
 			add_child(new_zone)
 			var new_dice = die_object.instance()
 			new_dice.position = dice_starting_pos
-			dice_starting_pos.x += 150
+			dice_starting_pos.x += 70
 			add_child(new_dice)
+
 		r1 += 1
 		r2 += 1
 		r3 += 1
@@ -107,10 +109,13 @@ func cancel_build_mode():
 	get_node("UI/TowerPreview").free()
 
 func verify_and_build():
-	if get_child(9).getHealth() <= 10:
+	if get_child(9).getHealth() <= 100 or r1 < 1 or r2 < 1 or r3 < 1:
 		build_valid = false
 	else:
-		get_child(9).lose_health(10)
+		get_child(9).lose_health(100)
+		r1 -= 1
+		r2 -= 1
+		r3 -= 1
 	if build_valid:
 		## Test to verify player has enough cash
 		var new_tower = load("res://Chip Tower.tscn").instance()
@@ -131,7 +136,8 @@ func _on_WaveTimer_timeout():
 func _on_EnemyTimer_timeout():
 	if(enemysSpawned <= waveNum):
 		var gambler
-		if (waveNum > 0) && (randi() % 7 == 0):
+		var num = 10 - waveNum
+		if (waveNum > 0) && (randi() % num == 0):
 			gambler = enemy2.instance()
 			enemysSpawned += 2
 		else:

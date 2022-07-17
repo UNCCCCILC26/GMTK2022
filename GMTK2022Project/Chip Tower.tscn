@@ -21,23 +21,24 @@ texture = ExtResource( 1 )
 position = Vector2( 0, -4.76837e-07 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/TopDrop"]
-position = Vector2( 0.297302, -19.0273 )
+position = Vector2( 0, -30.7071 )
 shape = SubResource( 1 )
 
 [node name="BotDrop" type="Area2D" parent="Sprite"]
 position = Vector2( 0, -4.76837e-07 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/BotDrop"]
-position = Vector2( -0.594604, 19.9192 )
+position = Vector2( 0, 31.2929 )
 shape = SubResource( 2 )
+
+[node name="Tower drop1" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( 0.297302, -19.1398 )
+
+[node name="Tower Drop 2" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( -0.297302, 19.6219 )
 
 [node name="ShootingTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[node name="TowDrop" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0.297302, -18.4327 )
-
-[node name="TowDrop2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -0.297302, 20.329 )
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_ShootingTimer_timeout"]

@@ -6,3 +6,6 @@ func select():
 	
 func deselect():
 	pass
+
+func draw():
+	draw_circle(position, 10, Color(255, 255, 255))

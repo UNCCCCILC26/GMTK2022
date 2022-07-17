@@ -15,7 +15,6 @@ func _ready():
 
 func _physics_process(delta):
 	var value = (health / (maxHealth * 1.0))
-	print(value)
 	$Path2D/PathFollow2D.get_child(0).get_children()[-1].value = value
 	move(delta)
 
@@ -37,6 +36,6 @@ func _areaEntered(area):
 func harm(dmg):
 	health -= dmg
 	if health <= 0:
-		get_parent().get_parent().get_node("Vault").addHealth(maxHealth)
+		get_parent().get_parent().get_node("Vault").addHealth(maxHealth / 10)
 		queue_free()
 

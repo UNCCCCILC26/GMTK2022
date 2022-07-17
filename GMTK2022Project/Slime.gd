@@ -9,7 +9,9 @@ extends "res://Gambler.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	maxHealth = 200
+	maxHealth = 400
+	speed = 200
+	
 	health = maxHealth # Replace with function body.
 
 

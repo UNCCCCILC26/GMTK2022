@@ -85,7 +85,7 @@ position = Vector2( 0.0562878, -47.55 )
 rotation = 0.002801
 scale = Vector2( 3, 3 )
 frames = SubResource( 11 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="PositionTracker" type="Node2D" parent="Path2D/PathFollow2D/GamblerBody"]
